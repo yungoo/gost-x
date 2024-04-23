@@ -205,6 +205,7 @@ func (h *httpHandler) handleRequest(ctx context.Context, conn net.Conn, req *htt
 	if req.Method == http.MethodConnect {
 		resp.StatusCode = http.StatusOK
 		resp.Status = "200 Connection established"
+		resp.ContentLength = -1
 
 		if log.IsLevelEnabled(logger.TraceLevel) {
 			dump, _ := httputil.DumpResponse(resp, false)
